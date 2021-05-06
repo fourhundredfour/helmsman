@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Helmsman Example</title>
 </head>
 <body>
-$END$
+    <header>
+        <h1>Helmsman</h1>
+        <fragment src="https://navigation.example.org" cacheable="true" cache="3600" ssr="true" headers="Authorization,Content-Type" />
+    </header>
+    <main>
+        <section>
+            <h2 class="sr-only">Recommendations</h2>
+            <fragment src="{RECOMMENDATION_URL}" cacheable="false" ssr="false" headers="Authorization,Content-Type" />
+        </section>
+        <section>
+            <h2 class="sr-only">Articles</h2>
+            <fragment src="https://articles.example.org" cacheable="true" ssr="false" />
+        </section>
+    </main>
+    <footer>
+        <fragment src="https://ads.example.org" cacheable="false" ssr="false" iframe="true" />
+    </footer>
 </body>
 </html>
