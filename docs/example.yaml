@@ -4,25 +4,7 @@ layout:
     template: "templates" # Folder with templates
     cache: "/tmp/templates" # Cache
 routes:
-  - name: "/"
+  - path: "/"
     layout: "index" # Would render templates/index.html
-    cacheable: true # When set to true it caches the rendered page and deliver it every time until the TTL exceeds.
-    ttl: 1800 # 1800s = 30mins
-    headers:
-      forward: # Forwards the headers to the fragments
-        - name: Authorization
-          default: ""
-          optional: true # When set to true then the header will not be forwarded when the value is empty. Otherwise it will redirect the empty header
-        - name: Content-Type
-          default: "text/html"
-      override: # Overrides the headers and pass it to the fragments
-        - name: "Host"
-          value: "schischkin.info"
-          optional: true
-  - name: "/users/*"
+  - path: "/user/*user"
     layout: "users"
-    cacheable: false # When set to false it fetches on every call the fragments
-    headers:
-      redirect:
-        - name: Authorization
-          default: ""
